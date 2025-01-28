@@ -1,0 +1,109 @@
+#gallery {
+  width: 100%;
+  max-width: 100vw;
+  padding: 2rem 2.5rem;
+
+  margin-inline: auto;
+
+  & img {
+    width: 100%;
+    height: auto;
+  }
+
+  & header {
+    text-align: center;
+
+    & span {
+      font: 500 var(--text-sm) / 1.5 var(--ff-base);
+    }
+  }
+  & figcaption {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+
+    font: 500 var(--text-sm) / 1.5 var(--ff-base);
+    color: white;
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1.5rem 2rem;
+
+    transition: transform 0.4s ease-in-out;
+    transform: translateY(100%);
+
+    background: linear-gradient(to top, rgba(0 0 0 / 0.64), rgba(0 0 0 / 0));
+  }
+
+  & figcaption img {
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 2rem;
+  }
+
+  & .content {
+    display: grid;
+    grid-template-areas: "a b b" "c c d";
+    gap: 2.5rem;
+    margin-top: 2rem;
+
+    & figure:nth-child(1) {
+      grid-area: a;
+    }
+    & figure:nth-child(2) {
+      grid-area: b;
+    }
+    & figure:nth-child(3) {
+      grid-area: c;
+    }
+    & figure:nth-child(4) {
+      grid-area: d;
+    }
+  }
+  & figure {
+    position: relative;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    line-height: 0;
+    animation: imageAppear linear backwards;
+    animation-timeline: view();
+    animation-range: 100px 400px;
+
+    & figure[data-delay] {
+      animation-range: 150px 450px;
+    }
+
+    & > img {
+      scale: 1.4;
+      height: 25rem;
+      object-fit: cover;
+
+      transition: scale 0.3s ease-in-out;
+    }
+
+    &:hover {
+      & > img {
+        scale: 1;
+      }
+
+      & figcaption {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+@keyframes imageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  /* to {
+    opacity: 1;
+    transform: translateY(0);
+  } */
+}
