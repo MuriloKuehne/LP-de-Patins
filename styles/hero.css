@@ -1,38 +1,67 @@
 #hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   max-width: 100vw;
   width: 100%;
   padding: 2.5rem 2rem;
   margin-inline: auto;
+  overflow: hidden;
 
-  & h1 {
-    max-width: 40rem;
-  }
+  /* patins */
 
-  & h1 div {
-    display: inline-block;
-    overflow: hidden;
-    height: 5rem;
-    width: min-content;
-    vertical-align: bottom;
-  }
-
-  & h1 span {
+  & > div:nth-child(2) {
     display: block;
+    width: 100%;
+    max-width: 30.5rem;
+    height: 30.5rem;
 
-    animation: slideup 6s infinite ease;
+    /* border: 2px solid red; */
+
+    & .content {
+      /* border: 2px solid black; */
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    & img {
+      position: absolute;
+      width: 100%;
+    }
+
+    & img[src*="Ellipse"] {
+      width: 94%;
+      top: 3%;
+      left: 3%;
+      transform: translateX(200%);
+      animation: slideIn 2.4s ease forwards;
+    }
+    & img[src*="patins"] {
+      z-index: 1;
+      transform: translateX(200%);
+      animation: slideIn 2s ease forwards;
+    }
+
+    & img[src*="1"] {
+      max-width: 5.5rem;
+      top: 30%;
+      z-index: 0;
+      transform: translateX(800%);
+      animation: slideIn 2.2s ease forwards;
+    }
+
+    & img[src*="2"] {
+      max-width: 2.5rem;
+      bottom: 35%;
+      right: 0;
+      z-index: 0;
+      transform: translateX(500%);
+      animation: slideIn 2.8s ease forwards;
+    }
   }
 
-  & h1 span:nth-child(1),
-  & h1 span:nth-child(4) {
-    color: var(--brand-blue);
-  }
-  & h1 span:nth-child(2) {
-    color: var(--brand-pink);
-  }
-  & h1 span:nth-child(3) {
-    color: var(--brand-green);
-  }
-
+  /* buttons */
   & .buttons {
     display: flex;
     gap: 2rem;
@@ -68,6 +97,36 @@
     & .button:hover {
       scale: 1.1;
     }
+  }
+
+  /* text */
+  & h1 {
+    max-width: 40rem;
+  }
+
+  & h1 div {
+    display: inline-block;
+    overflow: hidden;
+    height: 5rem;
+    width: min-content;
+    vertical-align: bottom;
+  }
+
+  & h1 span {
+    display: block;
+
+    animation: slideup 6s 2.4s infinite ease;
+  }
+
+  & h1 span:nth-child(1),
+  & h1 span:nth-child(4) {
+    color: var(--brand-blue);
+  }
+  & h1 span:nth-child(2) {
+    color: var(--brand-pink);
+  }
+  & h1 span:nth-child(3) {
+    color: var(--brand-green);
   }
 }
 
@@ -146,5 +205,15 @@
 
   100% {
     transform: translateY(-15rem);
+  }
+}
+
+@keyframes slideIn {
+  50% {
+    transform: translateX(-20px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }
